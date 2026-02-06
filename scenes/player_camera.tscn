@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://gdf5t1vq21ld"]
+[gd_scene format=3 uid="uid://de8dj1aj527ex"]
 
-[ext_resource type="Script" path="res://player_camera.gd" id="1_num78"]
+[ext_resource type="Script" path="res://scenes/player_camera.gd" id="1_7pa0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_num78"]
 size = Vector2(0, 0)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=211848819]
 position = Vector2(156, 98)
-script = ExtResource("1_num78")
+script = ExtResource("1_7pa0d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2145789321]
 position = Vector2(182.5, 83)
