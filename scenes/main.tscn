@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnvn7rubhkjkx"]
+
+[ext_resource type="PackedScene" uid="uid://cod6lq4wbq5b5" path="res://scenes/map.tscn" id="1_o5qli"]
+
+[node name="main" type="Node2D"]
+
+[node name="map" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(800, 800)
