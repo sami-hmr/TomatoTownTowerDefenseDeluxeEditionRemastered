@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbkasc4mo4kak"]
+
+[ext_resource type="Script" uid="uid://y3rfrg1egedm" path="res://Scenes/player.gd" id="1_v0iea"]
+
+[node name="Player" type="Node2D" unique_id=1515088060]
+script = ExtResource("1_v0iea")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=126032930]
+
+[node name="ressource_container" type="HBoxContainer" parent="Camera2D" unique_id=997009498]
+offset_left = 196.0
+offset_top = 203.0
+offset_right = 575.0
+offset_bottom = 324.0
+theme_override_constants/separation = 128
