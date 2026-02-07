@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var build_timer: Timer = $Building
 @onready var timer_label: Label = $BuildTimer
+@onready var cost_info: Node2D = $UpgradeInfo
 
 var build_selected: int = -1
 var costs: Resources = null
@@ -30,15 +31,17 @@ func _process(delta: float) -> void:
 		timer_label.text = str(int(build_timer.time_left))
 	if select_btn.has_focus():
 		if build_info == null:
-			select_build.visible = true
+			select_build.hide()
 			select_build.grab_focus()
 			select_build.show_popup()
 		else:
 			select_sp.visible = true
+			cost_info.show()
 		if Input.is_action_just_pressed("upgrade_build") and can_upgrade():
 			upgrade_build()
 	else:
-		select_sp.visible = false
+		select_sp.hide()
+		cost_info.hide()
 	if !select_build.has_focus():
 		select_build.visible = false
 
@@ -71,6 +74,11 @@ func upgrade_build() -> void:
 	else:
 		return
 	costs = build_list.cost_list[build_selected].resources[build_info.level - 1]
+	var next_cost: Resources = build_list.cost_list[build_selected].resources[build_info.level]
+	cost_info.get_node("Text").text =\
+						"Wood " + str(next_cost.get_resource("wood")) +\
+						"\nStone " + str(next_cost.get_resource("stone")) +\
+						"\nIron " + str(next_cost.get_resource("iron"))
 	timer_label.visible = true
 	build_timer.wait_time = costs.get_resource("time")
 	build_timer.start()
@@ -117,4 +125,5 @@ func _on_cooldown() -> void:
 		var res: Resources = get_parent().get_node("Player").get_node("Resources")
 		res.update_resource("juice", 1 * build_info.level)
 	if build_selected == 4:
+		# Todo: Attack closest 
 		pass

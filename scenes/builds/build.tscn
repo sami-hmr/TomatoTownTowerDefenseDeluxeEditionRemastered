@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dk7d238wlf2e4"]
 
-[ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scripts/builds/towers/build.gd" id="1_3flfx"]
+[ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scripts/builds/build.gd" id="1_3flfx"]
 [ext_resource type="Script" uid="uid://cfhde2mv0k2tr" path="res://scripts/ressources.gd" id="2_rmg7b"]
 [ext_resource type="Script" uid="uid://cf5bsqd75fnmb" path="res://scenes/builds/ListBuildInfo.gd" id="2_urer1"]
 [ext_resource type="Script" uid="uid://coq1j8ogwbqgo" path="res://scripts/resource_array.gd" id="3_32j70"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://oskrdxdhbnhl" path="res://assets/ui/selection/icons/fa960.png" id="25_urer1"]
 [ext_resource type="Texture2D" uid="uid://dnp3nnqj0nxei" path="res://assets/ui/selection/icons/fa34.png" id="26_map66"]
 [ext_resource type="Texture2D" uid="uid://cws7pk4d0a3nd" path="res://assets/ui/selection/icons/fa1483.png" id="27_32j70"]
+[ext_resource type="Texture2D" uid="uid://dip0pkqu4xdgu" path="res://assets/UI/UI_Flat_Frame03a.png" id="30_alt0y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p58lx"]
 atlas = ExtResource("5_wmb7i")
@@ -923,6 +924,26 @@ popup/item_6/id = 4
 
 [node name="Reload" type="Timer" parent="." unique_id=1997003054]
 autostart = true
+
+[node name="UpgradeInfo" type="Node2D" parent="." unique_id=1275860385]
+
+[node name="Background" type="Sprite2D" parent="UpgradeInfo" unique_id=1650698508]
+position = Vector2(1, 132.5)
+scale = Vector2(1.7708334, 1.453125)
+texture = ExtResource("30_alt0y")
+
+[node name="Text" type="Label" parent="UpgradeInfo" unique_id=931842609]
+offset_left = -101.0
+offset_top = 89.0
+offset_right = 101.0
+offset_bottom = 231.0
+theme_override_fonts/font = ExtResource("4_vkdee")
+text = "Wood: 1000
+Stone: 1000
+Iron: 1000
+
+"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Building" to="." method="_on_building_timeout"]
 [connection signal="item_selected" from="BuildSelection" to="." method="_on_build_selection"]
