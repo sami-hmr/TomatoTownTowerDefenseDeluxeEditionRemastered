@@ -20,6 +20,16 @@ position = Vector2(183.5, 83)
 process_callback = 0
 position_smoothing_enabled = true
 
+[node name="Resources" type="Node2D" parent="."]
+script = ExtResource("3_tparg")
+resource_list = Dictionary[String, int]({
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"wood": 300
+})
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
 [node name="ResourceDisplay" type="Node2D" parent="."]
 script = ExtResource("2_eanys")
 
@@ -31,13 +41,3 @@ offset_top = 522.0
 offset_right = 1151.0
 offset_bottom = 643.0
 theme_override_constants/separation = 128
-
-[node name="Resources" type="Node2D" parent="."]
-script = ExtResource("3_tparg")
-resource_list = Dictionary[String, int]({
-"iron": 0,
-"juice": 0,
-"stone": 0,
-"wood": 100
-})
-metadata/_custom_type_script = "uid://cfhde2mv0k2tr"

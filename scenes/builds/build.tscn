@@ -583,7 +583,7 @@ vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ojq8q")
-animation = &"0_idle"
+animation = &"6_build"
 autoplay = "0_idle"
 
 [node name="Select" type="Button" parent="."]

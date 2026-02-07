@@ -28,6 +28,7 @@ func _ready() -> void:
 	info.text = build.build_name + " - LvL." + str(build.level)
 
 func _process(delta: float) -> void:
+	building_process()
 	if build_timer.time_left > 0:
 		timer_label.text = str(int(build_timer.time_left))
 	if select_btn.has_focus(): 
@@ -36,6 +37,20 @@ func _process(delta: float) -> void:
 		select_sp.visible = true
 	else:
 		select_sp.visible = false
+
+func building_process() -> void:
+	if build_timer.time_left <= 0:
+		return
+	timer_label.text = str(int(build_timer.time_left))
+	var progress: int = build_timer.time_left / timer_list[build.level] * 100
+	if progress < 25:
+		anim.frame = 3
+	elif progress < 50:
+		anim.frame = 2
+	elif progress < 75:
+		anim.frame = 1
+	else:
+		anim.frame = 0
 
 func can_upgrade() -> bool:
 	var actual_res: Resources = get_parent().get_node("Player").get_node("Resources")
@@ -51,14 +66,16 @@ func upgrade_build() -> void:
 		build.level += 1
 	else:
 		return
-	info.visible = true
 	timer_label.visible = true
 	build_timer.wait_time = timer_list[build.level - 1]
 	build_timer.start()
 	anim.animation = str(build.level) + "_build"
+	anim.stop()
 
 func _on_building_timeout() -> void:
 	timer_label.visible = false
 	build_timer.stop()
 	anim.animation = str(build.level) + "_idle"
+	anim.play()
+	info.visible = true
 	info.text = build.build_name + " - LvL." + str(build.level)
