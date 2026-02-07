@@ -22,6 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://bl3q1nxh8k6oo" path="res://assets/ui/selection/UI_Flat_Select02a_2.png" id="20_nhnw1"]
 [ext_resource type="Texture2D" uid="uid://bt608o1hnt4oh" path="res://assets/ui/selection/UI_Flat_Select02a_3.png" id="21_svjal"]
 [ext_resource type="Texture2D" uid="uid://dgdilq5lhytb7" path="res://assets/ui/selection/UI_Flat_Select02a_4.png" id="22_65b0f"]
+[ext_resource type="Texture2D" uid="uid://b5udos80h3o4t" path="res://assets/ui/selection/icons/fa27.png" id="23_wmb7i"]
+[ext_resource type="Texture2D" uid="uid://debvic2m7xbdh" path="res://assets/ui/selection/icons/fa149.png" id="24_32j70"]
+[ext_resource type="Texture2D" uid="uid://oskrdxdhbnhl" path="res://assets/ui/selection/icons/fa960.png" id="25_urer1"]
+[ext_resource type="Texture2D" uid="uid://dnp3nnqj0nxei" path="res://assets/ui/selection/icons/fa34.png" id="26_map66"]
+[ext_resource type="Texture2D" uid="uid://cws7pk4d0a3nd" path="res://assets/ui/selection/icons/fa1483.png" id="27_32j70"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p58lx"]
 atlas = ExtResource("5_wmb7i")
@@ -551,6 +556,12 @@ animations = [{
 "speed": 22.0
 }]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_alt0y"]
+load_path = "res://.godot/imported/fa33.png-ea447a150464e30d4d2612cb6920431d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iwx2m"]
+load_path = "res://.godot/imported/fa1778.png-64ae1a55c33877a5c4476880972432be.ctex"
+
 [node name="Build" type="Node2D" unique_id=1506460742]
 script = ExtResource("1_3flfx")
 
@@ -614,4 +625,36 @@ text = "10s left"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BuildSelection" type="OptionButton" parent="." unique_id=1089192698]
+offset_left = -83.0
+offset_top = 13.0
+offset_right = 83.0
+offset_bottom = 44.0
+flat = true
+item_count = 7
+popup/item_0/text = "Buildings"
+popup/item_0/icon = SubResource("CompressedTexture2D_alt0y")
+popup/item_0/id = 5
+popup/item_0/separator = true
+popup/item_1/text = "Lumber House"
+popup/item_1/icon = SubResource("CompressedTexture2D_iwx2m")
+popup/item_1/id = 0
+popup/item_2/text = "Career"
+popup/item_2/icon = ExtResource("23_wmb7i")
+popup/item_2/id = 1
+popup/item_3/text = "Mine"
+popup/item_3/icon = ExtResource("24_32j70")
+popup/item_3/id = 2
+popup/item_4/text = "Laboratory"
+popup/item_4/icon = ExtResource("25_urer1")
+popup/item_4/id = 3
+popup/item_5/text = "Towers"
+popup/item_5/icon = ExtResource("26_map66")
+popup/item_5/id = 4
+popup/item_5/separator = true
+popup/item_6/text = "Archer"
+popup/item_6/icon = ExtResource("27_32j70")
+popup/item_6/id = 6
+
 [connection signal="timeout" from="Building" to="." method="_on_building_timeout"]
+[connection signal="item_selected" from="BuildSelection" to="." method="_on_build_selection"]

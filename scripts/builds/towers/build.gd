@@ -7,6 +7,7 @@ extends Node2D
 
 @onready var select_btn = $Select
 @onready var select_sp = $Select/SelectSprite
+@onready var select_build = $BuildSelection
 
 @export var timer_list: Array[float] = [
 	5.0,
@@ -25,18 +26,26 @@ func _ready() -> void:
 	select_sp.play()
 	timer_label.visible = false
 	info.visible = false
+	select_build.visible = false
 	info.text = build.build_name + " - LvL." + str(build.level)
 
 func _process(delta: float) -> void:
 	building_process()
 	if build_timer.time_left > 0:
 		timer_label.text = str(int(build_timer.time_left))
-	if select_btn.has_focus(): 
+	if select_btn.has_focus():
+		if build.level == 0:
+			select_build.visible = true
+			select_build.grab_focus()
+			select_build.show_popup()
+		else:
+			select_sp.visible = true
 		if Input.is_action_just_pressed("upgrade_build"):
 			upgrade_build()
-		select_sp.visible = true
 	else:
 		select_sp.visible = false
+	if !select_build.has_focus():
+		select_build.visible = false
 
 func building_process() -> void:
 	if build_timer.time_left <= 0:
@@ -79,3 +88,9 @@ func _on_building_timeout() -> void:
 	anim.play()
 	info.visible = true
 	info.text = build.build_name + " - LvL." + str(build.level)
+
+
+func _on_build_selection(index: int) -> void:
+	select_build.visible = false
+	if index == 6:
+		upgrade_build()
