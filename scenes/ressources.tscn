@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsugul84muoc7"]
+[gd_scene format=3 uid="uid://dsugul84muoc7"]
 
 [ext_resource type="Script" uid="uid://cfhde2mv0k2tr" path="res://scripts/ressources.gd" id="1_dgwog"]
 

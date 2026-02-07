@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgdilq5lhytb7"
-path="res://.godot/imported/UI_Flat_Select02a_4.png-033b03b0780db8726e693ac7a54d7914.ctex"
+uid="uid://csgf467pskybb"
+path="res://.godot/imported/Inverted hourglass19.png-6f28641cfb28292343a1b64152a8d910.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI/selection/UI_Flat_Select02a_4.png"
-dest_files=["res://.godot/imported/UI_Flat_Select02a_4.png-033b03b0780db8726e693ac7a54d7914.ctex"]
+source_file="res://assets/Ressource/hourglass/Inverted hourglass19.png"
+dest_files=["res://.godot/imported/Inverted hourglass19.png-6f28641cfb28292343a1b64152a8d910.ctex"]
 
 [params]
 
