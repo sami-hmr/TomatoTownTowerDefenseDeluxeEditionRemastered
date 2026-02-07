@@ -1,7 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://x1vv1jdc5bkn"]
+[gd_scene format=3 uid="uid://x1vv1jdc5bkn"]
 
 [ext_resource type="Texture2D" uid="uid://cd8ekmk2cny6d" path="res://assets/UI/Retro Pixel Ribbons, Banners and Frames 2/16.png" id="1_1gton"]
-[ext_resource type="Script" uid="uid://dfd7s0n5s6ana" path="res://resource_indicator.gd" id="1_jkfd7"]
+[ext_resource type="Script" uid="uid://dfd7s0n5s6ana" path="res://scripts/resource_indicator.gd" id="1_jkfd7"]
 [ext_resource type="FontFile" uid="uid://dhvt5yi3syspp" path="res://assets/Fonts/daydream.otf" id="3_v50ch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkfd7"]
