@@ -581,12 +581,12 @@ text = "Default - LvL.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=820159294]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ojq8q")
 animation = &"6_build"
 autoplay = "0_idle"
 
-[node name="Select" type="Button" parent="." unique_id=1944884118]
+[node name="Select" type="Button" parent="."]
 offset_left = -34.0
 offset_top = -57.0
 offset_right = 34.0
@@ -594,7 +594,7 @@ offset_bottom = 67.0
 mouse_default_cursor_shape = 2
 flat = true
 
-[node name="SelectSprite" type="AnimatedSprite2D" parent="Select" unique_id=1071987710]
+[node name="SelectSprite" type="AnimatedSprite2D" parent="Select"]
 position = Vector2(35, 90)
 scale = Vector2(2.125, 2.0625)
 sprite_frames = SubResource("SpriteFrames_3luoq")

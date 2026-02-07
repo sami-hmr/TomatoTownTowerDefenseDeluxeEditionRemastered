@@ -20,7 +20,10 @@ func setup_resources():
 	for data in resources_data:
 		var indicator = preload("res://scenes/resource_indicator.tscn").instantiate()
 		ressource_container.add_child(indicator)
-		indicator.setup.call_deferred(data["frames"], data["name"], data["amount"])
+		if indicator.has_method("setup"):
+			indicator.setup.call_deferred(data["frames"], data["name"], data["amount"])
+		else:
+			indicator.queue_free()
 
 func update_resources():
 	var children : Array[Node] = ressource_container.get_children()
