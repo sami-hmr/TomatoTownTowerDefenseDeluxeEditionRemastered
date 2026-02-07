@@ -11,7 +11,7 @@ var resource_list: Dictionary[String, int] = {
 
 signal resource_updated(name: String, val: int)
 
-func add_resource(name: String, val: int):
+func update_resource(name: String, val: int):
 	resource_list[name] += val
 	emit_signal("resource_updated", name, val)
 

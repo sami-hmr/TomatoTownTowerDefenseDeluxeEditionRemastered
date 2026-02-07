@@ -1,22 +1,112 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnvn7rubhkjkx"]
+[gd_scene load_steps=4 format=3 uid="uid://cnvn7rubhkjkx"]
 
 [ext_resource type="PackedScene" uid="uid://cod6lq4wbq5b5" path="res://scenes/map.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://dk7d238wlf2e4" path="res://scenes/builds/towers/archer_tower.tscn" id="2_0wfyh"] 
-[ext_resource type="PackedScene" uid="uid://de8dj1aj527ex" path="res://scenes/player_camera.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dk7d238wlf2e4" path="res://scenes/builds/build.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cf7kwx84ty528" path="res://scenes/player_camera.tscn" id="3_sugp2"]
 
-[node name="main" type="Node2D" unique_id=18181480]
+[node name="main" type="Node2D"]
 
-[node name="map" parent="." unique_id=1127816604 instance=ExtResource("1_o5qli")]
+[node name="map" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(800, 800)
 
-[node name="ArcherTower" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(588, 177)
-
-[node name="ArcherTower2" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(417, 197)
-
-[node name="ArcherTower3" parent="." instance=ExtResource("2_0wfyh")]
-position = Vector2(225, 243)
-
-[node name="CharacterBody2D2" parent="." unique_id=211848819 instance=ExtResource("3_sugp2")]
+[node name="Player" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(286, 464)
+
+[node name="Build" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(737, 396)
+
+[node name="Build2" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(534, 203)
+
+[node name="Build3" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(304, 585)
+
+[node name="Build4" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(302, 454)
+
+[node name="Build5" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(413, 400)
+
+[node name="Build6" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(567, 428)
+
+[node name="Build7" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(680, 170)
+
+[node name="Build8" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(930, 217)
+
+[node name="Build9" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(518, 674)
+
+[node name="Build10" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(142, 299)
+
+[node name="Build11" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(113, 681)
+
+[node name="Build12" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(372, 839)
+
+[node name="Build13" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(728, 722)
+
+[node name="Build14" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(668, 890)
+
+[node name="Build15" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(925, 966)
+
+[node name="Build16" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(979, 670)
+
+[node name="Build17" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(334, 1019)
+
+[node name="Build18" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(149, 1101)
+
+[node name="Build19" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(400, 1227)
+
+[node name="Build20" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(262, 1353)
+
+[node name="Build21" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(478, 1397)
+
+[node name="Build22" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(652, 1112)
+
+[node name="Build23" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1270, 593)
+
+[node name="Build24" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1218, 921)
+
+[node name="Build25" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1177, 751)
+
+[node name="Build26" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1318, 807)
+
+[node name="Build27" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1273, 315)
+
+[node name="Build28" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1107, 465)
+
+[node name="Build29" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(745, 575)
+
+[node name="Build30" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1437, 515)
+
+[node name="Build31" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1466, 980)
+
+[node name="Build32" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(1485, 770)
+
+[node name="Build33" parent="." instance=ExtResource("3_jyhfs")]
+position = Vector2(94, 517)
