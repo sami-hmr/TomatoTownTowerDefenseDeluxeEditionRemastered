@@ -4,7 +4,7 @@ extends Node2D
 @onready var anim = $AnimatedSprite2D
 
 func _ready() -> void:
-	$AnimatedSprite2D.play()
+	anim.play()
 	pass
 
 func update_animation() -> void:
