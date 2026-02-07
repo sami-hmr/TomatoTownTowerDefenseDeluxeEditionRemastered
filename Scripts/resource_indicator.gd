@@ -4,6 +4,7 @@ extends Control
 @onready var txt: Label = $Node2D/txt
 
 @export var value: int = 0
+@export var resource_name: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +15,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	txt.text = str(value)
 
-func setup(sprite_frames: SpriteFrames, amount: int):
+func setup(sprite_frames: SpriteFrames, name: String, amount: int):
 	sprite.sprite_frames = sprite_frames
 	sprite.play("default")
-	value = amount
+	self.value = amount
+	self.resource_name = name
