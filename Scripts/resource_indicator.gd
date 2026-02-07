@@ -15,8 +15,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	txt.text = str(value)
 
-func setup(sprite_frames: SpriteFrames, name: String, amount: int):
-	sprite.sprite_frames = sprite_frames
+func setup(new_sprite_frames: SpriteFrames, name: String, amount: int):
+	sprite.sprite_frames = new_sprite_frames
 	sprite.play("default")
 	self.value = amount
 	self.resource_name = name

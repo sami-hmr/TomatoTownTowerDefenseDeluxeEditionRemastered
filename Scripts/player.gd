@@ -1,5 +1,5 @@
 extends Node2D
-@onready var ressource_container: HBoxContainer = $Camera2D/ressource_container
+@onready var ressource_container: HBoxContainer = $"../CanvasLayer/ressource_container"
 
 var resources : Dictionary[String, int] = {
 	"wood": 0,
@@ -30,9 +30,9 @@ func setup_resources():
 		]
 
 	for data in resources_data:
-		var indicator = preload("res://Scenes/resource_indicator.tscn").instantiate()
+		var indicator = preload("res://scenes/resource_indicator.tscn").instantiate()
 		ressource_container.add_child(indicator)
-		indicator.setup(data["frames"], data["name"], data["amount"])
+		indicator.setup.call_deferred(data["frames"], data["name"], data["amount"])
 
 func update_resources():
 	var children : Array[Node] = ressource_container.get_children()

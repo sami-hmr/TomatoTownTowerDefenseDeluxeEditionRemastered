@@ -7,12 +7,5 @@ script = ExtResource("1_v0iea")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=126032930]
 
-[node name="ressource_container" type="HBoxContainer" parent="Camera2D" unique_id=997009498]
-offset_left = 58.0
-offset_top = 203.0
-offset_right = 575.0
-offset_bottom = 324.0
-theme_override_constants/separation = 128
-
 [connection signal="addResources" from="." to="." method="_on_add_resources"]
 [connection signal="setResources" from="." to="." method="_on_set_resources"]
