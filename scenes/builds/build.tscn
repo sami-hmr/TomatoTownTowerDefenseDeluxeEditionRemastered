@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dk7d238wlf2e4"]
+[gd_scene format=3 uid="uid://dk7d238wlf2e4"]
 
 [ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scripts/builds/towers/build.gd" id="1_3flfx"]
 [ext_resource type="Script" uid="uid://cfhde2mv0k2tr" path="res://scripts/ressources.gd" id="2_rmg7b"]
