@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvmm7fh8casno"]
+
+[ext_resource type="Script" uid="uid://dhtlfpr5lk64o" path="res://scripts/builds/build_info.gd" id="1_ugiof"]
+
+[node name="BuildInfo" type="Node2D"]
+script = ExtResource("1_ugiof")
+build_name = "default"

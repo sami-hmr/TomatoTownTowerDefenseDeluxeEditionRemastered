@@ -1,6 +1,6 @@
 [gd_scene load_steps=83 format=3 uid="uid://dk7d238wlf2e4"]
 
-[ext_resource type="Script" uid="uid://dhtlfpr5lk64o" path="res://scripts/builds/i_build.gd" id="1_y6jbv"]
+[ext_resource type="Script" uid="uid://dhtlfpr5lk64o" path="res://scripts/builds/build_info.gd" id="1_y6jbv"]
 [ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scripts/builds/towers/archer_tower.gd" id="1_yjxtp"]
 [ext_resource type="Texture2D" uid="uid://7lbddudpdc3t" path="res://assets/builds/towers/Archer/idle/1.png" id="2_rxg02"]
 [ext_resource type="Texture2D" uid="uid://tppe762tsmay" path="res://assets/builds/towers/Archer/building/1.png" id="2_wv2s0"]
