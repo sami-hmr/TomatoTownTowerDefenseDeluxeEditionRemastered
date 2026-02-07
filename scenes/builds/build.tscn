@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scripts/builds/towers/build.gd" id="1_3flfx"]
 [ext_resource type="Script" uid="uid://cfhde2mv0k2tr" path="res://scripts/ressources.gd" id="2_rmg7b"]
+[ext_resource type="Script" uid="uid://cf5bsqd75fnmb" path="res://scenes/builds/ListBuildInfo.gd" id="2_urer1"]
+[ext_resource type="Script" uid="uid://coq1j8ogwbqgo" path="res://scripts/resource_array.gd" id="3_32j70"]
 [ext_resource type="Script" uid="uid://dhtlfpr5lk64o" path="res://scripts/builds/build_info.gd" id="3_84dev"]
 [ext_resource type="FontFile" uid="uid://dhvt5yi3syspp" path="res://assets/Fonts/daydream.otf" id="4_vkdee"]
 [ext_resource type="Texture2D" uid="uid://tppe762tsmay" path="res://assets/builds/towers/Archer/building/1.png" id="5_wmb7i"]
@@ -565,20 +567,283 @@ load_path = "res://.godot/imported/fa1778.png-64ae1a55c33877a5c4476880972432be.c
 [node name="Build" type="Node2D" unique_id=1506460742]
 script = ExtResource("1_3flfx")
 
-[node name="Cost" type="Node2D" parent="." unique_id=642608151]
+[node name="BuildList" type="Node2D" parent="." unique_id=1001541256 node_paths=PackedStringArray("build_info_list", "cost_list")]
+script = ExtResource("2_urer1")
+build_info_list = [NodePath("Lumber/LumberInfo"), NodePath("Career/CareerInfo"), NodePath("Mine/MineInfo"), NodePath("Laboratory/LabInfo"), NodePath("Archery/ArcInfo")]
+cost_list = [NodePath("Lumber/LumberCosts"), NodePath("Career/CareerCosts"), NodePath("Mine/MineCosts"), NodePath("Laboratory/LabCosts"), NodePath("Archery/ArcCosts")]
+
+[node name="Lumber" type="Node" parent="BuildList" unique_id=1466102916]
+
+[node name="LumberCosts" type="Node2D" parent="BuildList/Lumber" unique_id=1852137219 node_paths=PackedStringArray("resources")]
+script = ExtResource("3_32j70")
+resources = [NodePath("1"), NodePath("2"), NodePath("3")]
+metadata/_custom_type_script = "uid://coq1j8ogwbqgo"
+
+[node name="1" type="Node2D" parent="BuildList/Lumber/LumberCosts" unique_id=425985819]
 script = ExtResource("2_rmg7b")
-resource_list = Dictionary[String, int]({
+resource_list = {
 "iron": 0,
 "juice": 0,
 "stone": 0,
+"time": 5,
 "wood": 100
-})
+}
 metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
 
-[node name="BuildInfo" type="Node2D" parent="." unique_id=1421847519]
+[node name="2" type="Node2D" parent="BuildList/Lumber/LumberCosts" unique_id=1395957494]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 50,
+"time": 10,
+"wood": 150
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="3" type="Node2D" parent="BuildList/Lumber/LumberCosts" unique_id=544847433]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 20,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="LumberInfo" type="Node2D" parent="BuildList/Lumber" unique_id=1203139578]
 script = ExtResource("3_84dev")
-build_name = "Archer"
+build_name = "Lumber"
 health = 100
+metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
+
+[node name="Career" type="Node" parent="BuildList" unique_id=757078799]
+
+[node name="CareerCosts" type="Node2D" parent="BuildList/Career" unique_id=1237497337 node_paths=PackedStringArray("resources")]
+script = ExtResource("3_32j70")
+resources = [NodePath("1"), NodePath("2"), NodePath("3")]
+metadata/_custom_type_script = "uid://coq1j8ogwbqgo"
+
+[node name="1" type="Node2D" parent="BuildList/Career/CareerCosts" unique_id=1667324626]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 10,
+"wood": 100
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="2" type="Node2D" parent="BuildList/Career/CareerCosts" unique_id=758246757]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 100,
+"time": 20,
+"wood": 200
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="3" type="Node2D" parent="BuildList/Career/CareerCosts" unique_id=391023945]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 30,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="CareerInfo" type="Node2D" parent="BuildList/Career" unique_id=315082579]
+script = ExtResource("3_84dev")
+build_name = "Career"
+health = 100
+metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
+
+[node name="Mine" type="Node" parent="BuildList" unique_id=1515189901]
+
+[node name="MineCosts" type="Node2D" parent="BuildList/Mine" unique_id=2145649333 node_paths=PackedStringArray("resources")]
+script = ExtResource("3_32j70")
+resources = [NodePath("1"), NodePath("2"), NodePath("3")]
+metadata/_custom_type_script = "uid://coq1j8ogwbqgo"
+
+[node name="1" type="Node2D" parent="BuildList/Mine/MineCosts" unique_id=1778084605]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 200,
+"time": 25,
+"wood": 300
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="2" type="Node2D" parent="BuildList/Mine/MineCosts" unique_id=206726204]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 30,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="3" type="Node2D" parent="BuildList/Mine/MineCosts" unique_id=1097797647]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 60,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="MineInfo" type="Node2D" parent="BuildList/Mine" unique_id=1210954162]
+script = ExtResource("3_84dev")
+build_name = "Mine"
+health = 100
+metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
+
+[node name="Laboratory" type="Node" parent="BuildList" unique_id=1378740538]
+
+[node name="LabCosts" type="Node2D" parent="BuildList/Laboratory" unique_id=987683101 node_paths=PackedStringArray("resources")]
+script = ExtResource("3_32j70")
+resources = [NodePath("1"), NodePath("2"), NodePath("3")]
+metadata/_custom_type_script = "uid://coq1j8ogwbqgo"
+
+[node name="1" type="Node2D" parent="BuildList/Laboratory/LabCosts" unique_id=1846240148]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 50,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="2" type="Node2D" parent="BuildList/Laboratory/LabCosts" unique_id=414499737]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 70,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="3" type="Node2D" parent="BuildList/Laboratory/LabCosts" unique_id=1898857617]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 80,
+"wood": 0
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="LabInfo" type="Node2D" parent="BuildList/Laboratory" unique_id=723283281]
+script = ExtResource("3_84dev")
+build_name = "Laboratory"
+health = 100
+metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
+
+[node name="Archery" type="Node" parent="BuildList" unique_id=64762325]
+
+[node name="ArcCosts" type="Node2D" parent="BuildList/Archery" unique_id=1453049771 node_paths=PackedStringArray("resources")]
+script = ExtResource("3_32j70")
+resources = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7")]
+metadata/_custom_type_script = "uid://coq1j8ogwbqgo"
+
+[node name="1" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=206394366]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 5,
+"wood": 100
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="2" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=1997481317]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 0,
+"time": 10,
+"wood": 250
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="3" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=292505142]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 100,
+"time": 15,
+"wood": 300
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="4" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=1482281209]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 0,
+"juice": 0,
+"stone": 200,
+"time": 30,
+"wood": 350
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="5" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=116559574]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 50,
+"juice": 0,
+"stone": 200,
+"time": 35,
+"wood": 300
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="6" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=597782272]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 75,
+"juice": 0,
+"stone": 200,
+"time": 40,
+"wood": 350
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="7" type="Node2D" parent="BuildList/Archery/ArcCosts" unique_id=1434673096]
+script = ExtResource("2_rmg7b")
+resource_list = {
+"iron": 100,
+"juice": 0,
+"stone": 200,
+"time": 60,
+"wood": 400
+}
+metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
+
+[node name="ArcInfo" type="Node2D" parent="BuildList/Archery" unique_id=1744461408]
+script = ExtResource("3_84dev")
+build_name = "Archery"
+health = 250
 metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
 
 [node name="Info" type="Label" parent="." unique_id=1202949521]
@@ -650,11 +915,15 @@ popup/item_4/icon = ExtResource("25_urer1")
 popup/item_4/id = 3
 popup/item_5/text = "Towers"
 popup/item_5/icon = ExtResource("26_map66")
-popup/item_5/id = 4
+popup/item_5/id = 6
 popup/item_5/separator = true
 popup/item_6/text = "Archer"
 popup/item_6/icon = ExtResource("27_32j70")
-popup/item_6/id = 6
+popup/item_6/id = 4
+
+[node name="Reload" type="Timer" parent="." unique_id=1997003054]
+autostart = true
 
 [connection signal="timeout" from="Building" to="." method="_on_building_timeout"]
 [connection signal="item_selected" from="BuildSelection" to="." method="_on_build_selection"]
+[connection signal="timeout" from="Reload" to="." method="_on_cooldown"]
