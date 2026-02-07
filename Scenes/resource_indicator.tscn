@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://x1vv1jdc5bkn"]
+
+[ext_resource type="Texture2D" uid="uid://cd8ekmk2cny6d" path="res://assets/UI/Retro Pixel Ribbons, Banners and Frames 2/16.png" id="1_1gton"]
+[ext_resource type="Script" uid="uid://dfd7s0n5s6ana" path="res://Scripts/resource_indicator.gd" id="1_jkfd7"]
+[ext_resource type="FontFile" uid="uid://dhvt5yi3syspp" path="res://assets/Fonts/daydream.otf" id="3_v50ch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkfd7"]
+atlas = ExtResource("1_1gton")
+region = Rect2(288, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v50ch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkfd7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jg522"]
+
+[node name="ResourceIndicator" type="Control" unique_id=726721186]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jkfd7")
+
+[node name="slot" type="AnimatedSprite2D" parent="." unique_id=1482869316]
+position = Vector2(60.48, 60.48)
+scale = Vector2(3.78, 3.78)
+sprite_frames = SubResource("SpriteFrames_v50ch")
+animation = &"idle"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1289191731]
+position = Vector2(29, 47)
+scale = Vector2(1.145, 1.145)
+
+[node name="txt" type="Label" parent="Node2D" unique_id=1566757769]
+offset_left = 10.48035
+offset_top = 16.593887
+offset_right = 47.48035
+offset_bottom = 39.593887
+pivot_offset = Vector2(19, 12)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_v50ch")
+theme_override_font_sizes/font_size = 11
+text = "67"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=687755237]
+position = Vector2(62, 48)
+scale = Vector2(3.1250007, 3.1250007)
+sprite_frames = SubResource("SpriteFrames_jg522")
