@@ -1,6 +1,7 @@
 [gd_scene load_steps=0 format=3 uid="uid://de8dj1aj527ex"]
 
-[ext_resource type="Script" path="res://scenes/player_camera.gd" id="1_7pa0d"]
+[ext_resource type="Script" uid="uid://bicot2nviu4t5" path="res://scenes/player_camera.gd" id="1_7pa0d"]
+[ext_resource type="Script" uid="uid://y3rfrg1egedm" path="res://Scripts/player.gd" id="2_eanys"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_num78"]
 size = Vector2(0, 0)
@@ -17,3 +18,18 @@ shape = SubResource("RectangleShape2D_num78")
 position = Vector2(183.5, 83)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="resources" type="Node2D" parent="." unique_id=81855942]
+script = ExtResource("2_eanys")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=756332097]
+
+[node name="ressource_container" type="HBoxContainer" parent="CanvasLayer" unique_id=1988611315]
+offset_left = 634.0
+offset_top = 522.0
+offset_right = 1151.0
+offset_bottom = 643.0
+theme_override_constants/separation = 128
+
+[connection signal="addResources" from="resources" to="resources" method="_on_add_resources"]
+[connection signal="setResources" from="resources" to="resources" method="_on_set_resources"]
