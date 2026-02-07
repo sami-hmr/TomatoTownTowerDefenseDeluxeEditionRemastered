@@ -1,7 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://x1vv1jdc5bkn"]
+[gd_scene load_steps=7 format=3 uid="uid://x1vv1jdc5bkn"]
 
 [ext_resource type="Texture2D" uid="uid://cd8ekmk2cny6d" path="res://assets/UI/Retro Pixel Ribbons, Banners and Frames 2/16.png" id="1_1gton"]
-[ext_resource type="Script" uid="uid://dfd7s0n5s6ana" path="res://resource_indicator.gd" id="1_jkfd7"]
+[ext_resource type="Script" path="res://resource_indicator.gd" id="1_jkfd7"]
 [ext_resource type="FontFile" uid="uid://dhvt5yi3syspp" path="res://assets/Fonts/daydream.otf" id="3_v50ch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkfd7"]
@@ -21,22 +21,22 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jg522"]
 
-[node name="ResourceIndicator" type="Control" unique_id=726721186]
+[node name="ResourceIndicator" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_jkfd7")
 
-[node name="slot" type="AnimatedSprite2D" parent="." unique_id=1482869316]
+[node name="slot" type="AnimatedSprite2D" parent="."]
 position = Vector2(60.48, 60.48)
 scale = Vector2(3.78, 3.78)
 sprite_frames = SubResource("SpriteFrames_v50ch")
 animation = &"idle"
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1289191731]
+[node name="Node2D" type="Node2D" parent="."]
 position = Vector2(29, 47)
 scale = Vector2(1.145, 1.145)
 
-[node name="txt" type="Label" parent="Node2D" unique_id=1566757769]
+[node name="txt" type="Label" parent="Node2D"]
 offset_left = 10.48035
 offset_top = 16.593887
 offset_right = 47.48035
@@ -50,7 +50,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=687755237]
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(62, 48)
 scale = Vector2(3.1250007, 3.1250007)
 sprite_frames = SubResource("SpriteFrames_jg522")
