@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cod6lq4wbq5b5" path="res://scenes/map.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://de8dj1aj527ex" path="res://scenes/player_camera.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://w7wrh5ivhg3u" path="res://scenes/mob_spawner.tscn" id="4_tbgi4"]
 
 [node name="main" type="Node2D" unique_id=18181480]
 
@@ -10,3 +11,6 @@ position = Vector2(800, 800)
 
 [node name="CharacterBody2D2" parent="." unique_id=211848819 instance=ExtResource("2_0wfyh")]
 position = Vector2(286, 464)
+
+[node name="mob_spawner" parent="." unique_id=1796499110 instance=ExtResource("4_tbgi4")]
+position = Vector2(1060, 858)

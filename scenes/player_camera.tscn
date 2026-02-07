@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de8dj1aj527ex"]
 
-[ext_resource type="Script" path="res://scenes/player_camera.gd" id="1_7pa0d"]
+[ext_resource type="Script" uid="uid://bicot2nviu4t5" path="res://scenes/player_camera.gd" id="1_7pa0d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_num78"]
 size = Vector2(0, 0)
@@ -16,4 +16,8 @@ shape = SubResource("RectangleShape2D_num78")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=954142056]
 position = Vector2(183.5, 83)
 process_callback = 0
+limit_left = 0
+limit_top = 0
+limit_right = 1617
+limit_bottom = 1617
 position_smoothing_enabled = true

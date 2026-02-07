@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bpk13kikrimej"]
+
+[ext_resource type="Script" uid="uid://dqjps3bl3synx" path="res://scenes/stat_pool.gd" id="1_io22o"]
+
+[node name="StatPool" type="Node2D" unique_id=1086033297]
+script = ExtResource("1_io22o")

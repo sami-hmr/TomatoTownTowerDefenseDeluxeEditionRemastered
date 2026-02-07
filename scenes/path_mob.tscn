@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bkgyvjimw03gd"]
+
+[ext_resource type="Script" uid="uid://hx1mv30mgm5j" path="res://scenes/path_follow_mob.gd" id="1_1wbmt"]
+[ext_resource type="PackedScene" uid="uid://digdnvsmg71to" path="res://scenes/mob.tscn" id="1_yqi5w"]
+
+[sub_resource type="Curve2D" id="Curve2D_1wbmt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 229, 92, 0, 0, 0, 0, 207, 385, 0, 0, 0, 0, 78, 435, 0, 0, 0, 0, -287, 449, 0, 0, 0, 0, -385, 546, 0, 0, 0, 0, -416, 600, 0, 0, 0, 0, -418, 688, 0, 0, 0, 0, -395, 737, 0, 0, 0, 0, -324, 804, 0, 0, 0, 0, -277, 860, 0, 0, 0, 0, -127, 910, 0, 0, 0, 0, 4, 947, 0, 0, 0, 0, 356, 944, 0, 0, 0, 0, 429, 889, 0, 0, 0, 0, 524, 806, 0, 0, 0, 0, 572, 717, 0, 0, 0, 0, 622, 587, 0, 0, 0, 0, 672, 545, 0, 0, 0, 0, 735, 598, 0, 0, 0, 0, 765, 709, 0, 0, 0, 0, 798, 857, 0, 0, 0, 0, 819, 973, 0, 0, 0, 0, 809, 1071, 0, 0, 0, 0, 707, 1137, 0, 0, 0, 0, 577, 1166, 0, 0, 0, 0, 403, 1192, 0, 0, 0, 0, 231, 1186, 0, 0, 0, 0, 103, 1173, 0, 0, 0, 0, -4, 1171, 0, 0, 0, 0, -91, 1144, 0, 0, 0, 0, -175, 1117, 0, 0, 0, 0, -278, 1086, 0, 0, 0, 0, -331, 1086, 0, 0, 0, 0, -335, 1189, 0, 0, 0, 0, -330, 1270, 0, 0, 0, 0, -236, 1341, 0, 0, 0, 0, -114, 1400, 0, 0, 0, 0, 73, 1476, 0, 0, 0, 0, 165, 1511)
+}
+point_count = 39
+
+[node name="PathMob" type="Node2D" unique_id=465253968]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=355648410]
+curve = SubResource("Curve2D_1wbmt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=263896252]
+position = Vector2(229, 92)
+rotation = 0.20148385
+rotates = false
+script = ExtResource("1_1wbmt")
+
+[node name="RigidBody2D" parent="Path2D/PathFollow2D" unique_id=617187892 instance=ExtResource("1_yqi5w")]
+position = Vector2(-0.55184937, -3.1961594)
+rotation = -0.20148385
