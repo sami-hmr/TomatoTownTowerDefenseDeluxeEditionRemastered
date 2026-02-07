@@ -1,9 +1,9 @@
-[gd_scene load_steps=78 format=3 uid="uid://dk7d238wlf2e4"]
+[gd_scene load_steps=83 format=3 uid="uid://dk7d238wlf2e4"]
 
+[ext_resource type="Script" uid="uid://dhtlfpr5lk64o" path="res://scenes/builds/i_build.gd" id="1_y6jbv"]
 [ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scenes/builds/towers/archer_tower.gd" id="1_yjxtp"]
 [ext_resource type="Texture2D" uid="uid://7lbddudpdc3t" path="res://assets/builds/towers/Archer/idle/1.png" id="2_rxg02"]
 [ext_resource type="Texture2D" uid="uid://tppe762tsmay" path="res://assets/builds/towers/Archer/building/1.png" id="2_wv2s0"]
-[ext_resource type="PackedScene" uid="uid://dvmm7fh8casno" path="res://scenes/builds/IBuild.tscn" id="2_yjxtp"]
 [ext_resource type="Texture2D" uid="uid://6g8k6r2jv53c" path="res://assets/builds/towers/Archer/idle/2.png" id="3_ojq8q"]
 [ext_resource type="Texture2D" uid="uid://pyh2xeil6dk5" path="res://assets/builds/towers/Archer/building/2.png" id="4_yjxtp"]
 [ext_resource type="Texture2D" uid="uid://cukbwn80d6qa8" path="res://assets/builds/towers/Archer/building/3.png" id="6_pwus0"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://bj40ywrkh12pp" path="res://assets/builds/towers/Archer/idle/6.png" id="13_4nbxp"]
 [ext_resource type="Texture2D" uid="uid://c4w4ge01cu02a" path="res://assets/builds/towers/Archer/building/7.png" id="14_eed1y"]
 [ext_resource type="Texture2D" uid="uid://pum2joo8eln5" path="res://assets/builds/towers/Archer/idle/7.png" id="15_w0kba"]
+[ext_resource type="Texture2D" uid="uid://brisulvel0tj0" path="res://assets/ui/selection/UI_Flat_Select02a_1.png" id="17_3luoq"]
+[ext_resource type="Texture2D" uid="uid://bl3q1nxh8k6oo" path="res://assets/ui/selection/UI_Flat_Select02a_2.png" id="18_v3im6"]
+[ext_resource type="Texture2D" uid="uid://bt608o1hnt4oh" path="res://assets/ui/selection/UI_Flat_Select02a_3.png" id="19_r40n1"]
+[ext_resource type="Texture2D" uid="uid://dgdilq5lhytb7" path="res://assets/ui/selection/UI_Flat_Select02a_4.png" id="20_g8wrb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6e1p"]
 atlas = ExtResource("2_wv2s0")
@@ -513,15 +517,60 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3luoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_3luoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_v3im6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_r40n1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_g8wrb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="ArcherTower" type="Node2D"]
 script = ExtResource("1_yjxtp")
 
-[node name="IBuild" parent="." instance=ExtResource("2_yjxtp")]
+[node name="BuildInfo" type="Node2D" parent="."]
+script = ExtResource("1_y6jbv")
 build_name = "Archer"
 level = 1
 health = 100
 cost = 100
+metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -101.0
+offset_top = 64.0
+offset_right = 101.0
+offset_bottom = 87.0
+text = "Default - LvL.1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ojq8q")
 animation = &"1_build"
+
+[node name="Select" type="Button" parent="."]
+offset_left = -34.0
+offset_top = -57.0
+offset_right = 34.0
+offset_bottom = 67.0
+mouse_default_cursor_shape = 2
+flat = true
+
+[node name="SelectSprite" type="AnimatedSprite2D" parent="Select"]
+position = Vector2(35, 90)
+scale = Vector2(2.125, 2.0625)
+sprite_frames = SubResource("SpriteFrames_3luoq")
+speed_scale = 0.5

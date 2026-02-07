@@ -1,4 +1,4 @@
-class_name IBuild
+class_name BuildInfo
 extends Node2D
 
 @export var build_name: String
@@ -6,15 +6,8 @@ extends Node2D
 @export var health: int
 @export var cost: int
 
-@onready var select: Button = $Select
-
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
-
-func _on_selected_build() -> void:
-	if (level < 7):
-		level += 1
 	pass
