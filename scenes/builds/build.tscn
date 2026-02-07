@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dk7d238wlf2e4"]
+[gd_scene format=3 uid="uid://dk7d238wlf2e4"]
 
 [ext_resource type="Script" uid="uid://bqsmm7opoc430" path="res://scripts/builds/towers/build.gd" id="1_3flfx"]
 [ext_resource type="Script" uid="uid://cfhde2mv0k2tr" path="res://scripts/ressources.gd" id="2_rmg7b"]
@@ -551,10 +551,10 @@ animations = [{
 "speed": 22.0
 }]
 
-[node name="Build" type="Node2D"]
+[node name="Build" type="Node2D" unique_id=1506460742]
 script = ExtResource("1_3flfx")
 
-[node name="Cost" type="Node2D" parent="."]
+[node name="Cost" type="Node2D" parent="." unique_id=642608151]
 script = ExtResource("2_rmg7b")
 resource_list = Dictionary[String, int]({
 "iron": 0,
@@ -564,13 +564,13 @@ resource_list = Dictionary[String, int]({
 })
 metadata/_custom_type_script = "uid://cfhde2mv0k2tr"
 
-[node name="BuildInfo" type="Node2D" parent="."]
+[node name="BuildInfo" type="Node2D" parent="." unique_id=1421847519]
 script = ExtResource("3_84dev")
 build_name = "Archer"
 health = 100
 metadata/_custom_type_script = "uid://dhtlfpr5lk64o"
 
-[node name="Info" type="Label" parent="."]
+[node name="Info" type="Label" parent="." unique_id=1202949521]
 offset_left = -101.0
 offset_top = 64.0
 offset_right = 101.0
@@ -581,12 +581,12 @@ text = "Default - LvL.1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1203311406]
 sprite_frames = SubResource("SpriteFrames_ojq8q")
 animation = &"6_build"
 autoplay = "0_idle"
 
-[node name="Select" type="Button" parent="."]
+[node name="Select" type="Button" parent="." unique_id=1378653617]
 offset_left = -34.0
 offset_top = -57.0
 offset_right = 34.0
@@ -594,16 +594,16 @@ offset_bottom = 67.0
 mouse_default_cursor_shape = 2
 flat = true
 
-[node name="SelectSprite" type="AnimatedSprite2D" parent="Select"]
+[node name="SelectSprite" type="AnimatedSprite2D" parent="Select" unique_id=213249235]
 position = Vector2(35, 90)
 scale = Vector2(2.125, 2.0625)
 sprite_frames = SubResource("SpriteFrames_3luoq")
 speed_scale = 0.5
 
-[node name="Building" type="Timer" parent="."]
+[node name="Building" type="Timer" parent="." unique_id=1382638811]
 one_shot = true
 
-[node name="BuildTimer" type="Label" parent="."]
+[node name="BuildTimer" type="Label" parent="." unique_id=2116897659]
 offset_left = -62.0
 offset_top = 18.0
 offset_right = 64.0
