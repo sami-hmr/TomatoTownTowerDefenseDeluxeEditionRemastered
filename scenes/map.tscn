@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cod6lq4wbq5b5"]
 
 [ext_resource type="Texture2D" uid="uid://b4j4vhlmedmk5" path="res://assets/FieldsTileset.png" id="1_4xfga"]
+[ext_resource type="Script" uid="uid://bysdw3q7sjxe5" path="res://scenes/village.gd" id="2_6ek7f"]
 [ext_resource type="Texture2D" uid="uid://dq3nivarj4tqo" path="res://assets/builds/village/house1.png" id="2_paxxb"]
 [ext_resource type="Texture2D" uid="uid://bvpoh8m10ttd1" path="res://assets/builds/village/wallsTileset.png" id="3_gldc4"]
 [ext_resource type="Texture2D" uid="uid://b201jhspm6wwl" path="res://assets/builds/village/decoration/3.png" id="3_jh32y"]

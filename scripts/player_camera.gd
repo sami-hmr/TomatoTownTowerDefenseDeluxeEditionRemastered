@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 const SPEED = 300.0
+const x_max = 860
+const x_min = 385
+const y_min = 240
+const y_max = 1200
 
 
 
