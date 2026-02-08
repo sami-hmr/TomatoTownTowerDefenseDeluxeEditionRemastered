@@ -1,17 +1,23 @@
 extends CharacterBody2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var flash_rect: ColorRect = $ColorRect
 
 const SPEED = 300.0
-const x_max = 860
-const x_min = 385
-const y_min = 240
-const y_max = 1200
+var pv = 1000
+
 
 func shake_cam(strength: float = 30.0):
 	camera_2d.apply_shake(strength)
-
-var pv = 1000
+	
+func flash(speed: float, color: Color):
+	flash_rect.color = color
+	flash_rect.color.a = 1.0
+	flash_rect.visible = true
+	
+	var tween = create_tween()
+	tween.tween_property(flash_rect, "color:a", 0.0, speed)
+	tween.tween_callback(func(): flash_rect.visible = false)
 
 
 func _physics_process(delta: float) -> void:
@@ -46,5 +52,5 @@ func handle_zoom():
 
 func _on_mob_spawner_damage(count: int) -> void:
 	pv -= count
-	print("Village has been attacked, ", pv, " hp left")
-	pass # Replace with function body.
+	flash(1, Color.RED)
+	shake_cam(30)
