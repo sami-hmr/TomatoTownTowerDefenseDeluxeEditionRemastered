@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dl3vfphnjd67p"]
+
+[ext_resource type="Script" uid="uid://d1oup55lbcgc0" path="res://scripts/builds/build_info_array.gd" id="1_sxvuy"]
+
+[node name="BuildInfoArray" type="Node2D" unique_id=1935453931]
+script = ExtResource("1_sxvuy")
