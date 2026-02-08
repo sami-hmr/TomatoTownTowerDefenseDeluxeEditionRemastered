@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://de8dj1aj527ex" path="res://scenes/player_camera.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://cbcsxqjje3ktx" path="res://scripts/zeub_humide.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://w7wrh5ivhg3u" path="res://scenes/mob_spawner.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bda61kbdui834" path="res://scenes/clouds.tscn" id="6_tefeu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
 
@@ -28,9 +29,6 @@ debug_color = Color(0.8503294, 0, 0.11919095, 0.41960785)
 position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_sugp2")
 debug_color = Color(0.11293744, 0.42354527, 0.8974034, 0.41960785)
-
-[node name="Player" parent="." unique_id=839081584 instance=ExtResource("3_sugp2")]
-position = Vector2(286, 464)
 
 [node name="Build" parent="." unique_id=620519813 instance=ExtResource("3_jyhfs")]
 position = Vector2(737, 396)
@@ -133,6 +131,11 @@ position = Vector2(94, 517)
 
 [node name="mob_spawner" parent="." unique_id=1796499110 instance=ExtResource("5_tbgi4")]
 position = Vector2(1262, 153)
+
+[node name="Player" parent="." unique_id=839081584 instance=ExtResource("3_sugp2")]
+position = Vector2(286, 464)
+
+[node name="CloudsSpawner" parent="." unique_id=1305137599 instance=ExtResource("6_tefeu")]
 
 [connection signal="area_entered" from="ZeubHumide/Area2D" to="ZeubHumide" method="_on_area_2d_area_entered"]
 [connection signal="death" from="Player" to="mob_spawner" method="_on_player_death"]

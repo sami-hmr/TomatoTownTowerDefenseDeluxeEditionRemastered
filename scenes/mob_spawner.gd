@@ -75,10 +75,11 @@ func _on_timer_timeout() -> void:
 
 func _on_player_death() -> void:
 	dead = true
-	queue_free()
+	#queue_free()
 	pass # Replace with function body.
 
 
 func _on_timer_2_timeout() -> void:
-	queue_free()
+	dead = true
+	#queue_free()
 	pass # Replace with function body.

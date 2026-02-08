@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://daj6ilqpjx810"]
+
+[node name="Label" type="Label" unique_id=1377661006]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "YOU LOSE"
