@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://37ae03bu0d02" path="res://assets/D_Walk.png" id="1_4are2"]
 [ext_resource type="Script" uid="uid://55tsqctjosql" path="res://scenes/slime.gd" id="1_d4cuo"]
 [ext_resource type="Texture2D" uid="uid://beovq1sr3odsb" path="res://assets/D_Death.png" id="2_71rcx"]
-[ext_resource type="Script" uid="uid://dqjps3bl3synx" path="res://scenes/stat_pool.gd" id="2_bsing"]
+[ext_resource type="Script" path="res://scenes/stat_pool.gd" id="2_bsing"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpivu"]
 atlas = ExtResource("2_71rcx")
@@ -122,6 +122,6 @@ shape = SubResource("CapsuleShape2D_nao87")
 
 [node name="StatPool" type="Node2D" parent="." unique_id=1598191718]
 script = ExtResource("2_bsing")
-metadata/_custom_type_script = "uid://dqjps3bl3synx"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

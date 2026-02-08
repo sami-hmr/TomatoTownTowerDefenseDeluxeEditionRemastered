@@ -11,23 +11,31 @@ extends Node2D
 @onready var timer_label: Label = $BuildTimer
 @onready var cost_info: Node2D = $UpgradeInfo
 @onready var cooldown: Timer = $Reload
-@onready var range: Area2D = $range
 @onready var range_shape: CollisionShape2D = $range/shape
+@onready var build_finished_anim : AnimatedSprite2D = $end_animation
+
 
 var build_selected: int = -1
 var costs: Resources = null
 var build_info: BuildInfo = null
 var selected : bool = false
 var in_area: Array = []
+var player
 
 
 func _ready() -> void:
+	range_shape.shape = range_shape.shape.duplicate()
 	select_build.get_popup().id_focused.connect(_on_item_hovered)
 	anim.play()
 	select_sp.play()
 	timer_label.hide()
 	info.hide()
 	select_build.hide()
+	var children = get_parent().get_children()
+	for child in children:
+		if child.name == "Player":
+			player = child
+			print("found player")
 
 func _process(delta: float) -> void:
 	building_process()
@@ -87,6 +95,7 @@ func upgrade_build() -> void:
 	reload.wait_time = build_info.cooldown[build_info.level - 1]
 	range_shape.shape.radius = build_info.attack_range[build_info.level - 1]
 	costs = build_list.cost_list[build_selected].resources[build_info.level - 1]
+	player.shake_cam(10)
 	var next_cost: Resources = build_list.cost_list[build_selected].resources[build_info.level]
 	cost_info.get_node("Text").text =\
 						"Wood " + str(next_cost.get_resource("wood")) +\
@@ -100,6 +109,9 @@ func upgrade_build() -> void:
 	anim.stop()
 
 func _on_building_timeout() -> void:
+	timer_label.visible = false
+	build_finished_anim.visible = true
+	build_finished_anim.play("default")
 	if (build_info == null):
 		return
 	timer_label.hide()
@@ -135,10 +147,13 @@ func _on_build_selection(index: int) -> void:
 
 func shoot_enemies():
 	for enemy in in_area:
+		if !is_instance_valid(enemy):
+			return
 		var bullet = preload("res://scenes/bullet.tscn").instantiate()
 		self.add_child(bullet)
 		bullet.global_position = self.global_position
 		bullet.target = enemy
+		return
 	return
 
 func _on_cooldown() -> void:
@@ -160,12 +175,27 @@ func _on_cooldown() -> void:
 		shoot_enemies()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("enemy"):
+	var parent = body.get_parent()
+	if body.has_method("enemy") or (parent and parent.has_method("enemy")):
 		in_area.append(body)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.has_method("enemy"):
+	var parent = body.get_parent()
+	if body.has_method("enemy") or (parent and parent.has_method("enemy")):
 		var id = in_area.find(body)
+		if id != -1:
+			in_area.remove_at(id)
+
+
+func _on_range_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if area.has_method("enemy") or (parent and parent.has_method("enemy")):
+		in_area.append(area)
+
+func _on_range_area_exited(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if area.has_method("enemy") or (parent and parent.has_method("enemy")):
+		var id = in_area.find(area)
 		if id != -1:
 			in_area.remove_at(id)

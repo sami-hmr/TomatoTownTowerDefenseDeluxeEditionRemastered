@@ -7,11 +7,8 @@ extends CharacterBody2D
 var damaged: bool = false
 
 func _ready() -> void:
-	spool.pv = 100
+	spool.pv = 1000
 	pass # Replace with function body.
-
-func enemy() -> void:
-	return
 
 func die() -> void:
 	if !animated_sprite_2d.animation == "death":
@@ -26,7 +23,6 @@ func damage() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	#spool.pv -= 1
 	
 	if parent.progress > 5000 && damaged == false:
 		damage()
@@ -39,8 +35,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		queue_free()
 	pass # Replace with function body.
 
-
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.has_method("bullet"):
-		self.spool.pv -= area.damage
-		area.queue_free()
+func enemy() -> void:
+	pass

@@ -4,3 +4,10 @@
 
 [node name="mob_spawner" type="Node2D" unique_id=1796499110]
 script = ExtResource("1_ljl1v")
+
+[node name="Timer" type="Timer" parent="." unique_id=810871379]
+wait_time = 300.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

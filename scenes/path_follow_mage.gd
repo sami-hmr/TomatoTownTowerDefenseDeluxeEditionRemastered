@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var runspeed = 40
+@export var runspeed = 30
 @export var move: bool = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
