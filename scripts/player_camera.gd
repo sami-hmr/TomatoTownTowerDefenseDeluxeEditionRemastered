@@ -20,7 +20,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	handle_zoom()
+	display_resource_container(cam_size)
 	move_and_slide()
+
+func display_resource_container(cam_size: Vector2):
+	
+	return
 
 func handle_zoom():
 	if (Input.is_action_just_released("zoom in")):

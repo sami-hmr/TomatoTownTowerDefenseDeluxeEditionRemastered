@@ -3,11 +3,30 @@
 [ext_resource type="PackedScene" uid="uid://cod6lq4wbq5b5" path="res://scenes/map.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dk7d238wlf2e4" path="res://scenes/builds/build.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cf7kwx84ty528" path="res://scenes/player_camera.tscn" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://cbcsxqjje3ktx" path="res://scripts/zeub_humide.gd" id="4_jyhfs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
 
 [node name="main" type="Node2D" unique_id=1482187833]
 
 [node name="map" parent="." unique_id=283908063 instance=ExtResource("1_o5qli")]
 position = Vector2(800, 800)
+
+[node name="ZeubHumide" type="CharacterBody2D" parent="." unique_id=1765354438]
+visible = false
+script = ExtResource("4_jyhfs")
+
+[node name="Area2D" type="Area2D" parent="ZeubHumide" unique_id=1429653783]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZeubHumide/Area2D" unique_id=1149879843]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_sugp2")
+debug_color = Color(0.8503294, 0, 0.11919095, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZeubHumide" unique_id=2032924799]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_sugp2")
+debug_color = Color(0.11293744, 0.42354527, 0.8974034, 0.41960785)
 
 [node name="Player" parent="." unique_id=839081584 instance=ExtResource("3_sugp2")]
 position = Vector2(286, 464)
@@ -110,3 +129,5 @@ position = Vector2(1485, 770)
 
 [node name="Build33" parent="." unique_id=396374096 instance=ExtResource("3_jyhfs")]
 position = Vector2(94, 517)
+
+[connection signal="area_entered" from="ZeubHumide/Area2D" to="ZeubHumide" method="_on_area_2d_area_entered"]
