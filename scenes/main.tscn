@@ -6,10 +6,16 @@
 [ext_resource type="Script" uid="uid://cbcsxqjje3ktx" path="res://scripts/zeub_humide.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://w7wrh5ivhg3u" path="res://scenes/mob_spawner.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bda61kbdui834" path="res://scenes/clouds.tscn" id="6_tefeu"]
+[ext_resource type="AudioStream" uid="uid://clepu1vvq8q7r" path="res://assets/musics/Radioactive (8 Bit Remix Cover Version) [Tribute to Imagine Dragons] - 8 Bit Universe.mp3" id="7_o6xl0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
 
 [node name="main" type="Node2D" unique_id=1482187833]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1292668848]
+stream = ExtResource("7_o6xl0")
+autoplay = true
+parameters/looping = true
 
 [node name="map" parent="." unique_id=283908063 instance=ExtResource("1_o5qli")]
 position = Vector2(800, 800)
