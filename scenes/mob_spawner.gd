@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var main = get_node("/root/main")
 var slime_spawn := preload("res://scenes/path_mob.tscn")
+var mage_spawn := preload("res://scenes/path_mage.tscn")
 
 var spawn_x = 600
 var spawn_y = -105
@@ -12,6 +13,10 @@ var spawn_timer := 0.0
 var difficulty_timer := 0.0
 var amount_enemy = 1
 var difficulty_cycle = 1
+
+var mage_amount = 1
+var mage_cycle = 0
+var apocalypse = false
 
 var rng = RandomNumberGenerator.new()
 
@@ -45,3 +50,21 @@ func spawn_mob() -> void:
 		slime.position.x = rng.randf_range(spawn_x - 20.0, spawn_x + 20.0)
 		slime.position.y = rng.randf_range(spawn_y - 20.0, spawn_y + 20.0)
 		main.add_child(slime)
+	if apocalypse:
+		mage_cycle += 1
+		if mage_cycle % 3 == 0:
+			print("spawning mage")
+			if mage_cycle % 9:
+				mage_amount += 1
+			var amount_mage = rng.randi_range(1, mage_amount)
+			for a in amount_mage:
+				var mage = mage_spawn.instantiate()
+				mage.position.x = rng.randf_range(spawn_x - 20.0, spawn_x + 20.0)
+				mage.position.y = rng.randf_range(spawn_y - 20.0, spawn_y + 20.0)
+				main.add_child(mage)
+
+
+func _on_timer_timeout() -> void:
+	apocalypse = true
+	print("apocalypse has started!")
+	pass # Replace with function body.
