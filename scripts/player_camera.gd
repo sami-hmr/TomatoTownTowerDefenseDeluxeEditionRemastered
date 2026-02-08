@@ -11,8 +11,12 @@ const y_max = 1200
 
 var pv = 1000
 
+var moveable = true
+
 
 func _physics_process(delta: float) -> void:
+	if moveable == false:
+		return
 	var cam_size : Vector2 = camera_2d.get_viewport_rect().size / camera_2d.zoom
 	collision_shape_2d.shape.size = cam_size
 	var direction_x := Input.get_axis("left", "right")
@@ -45,4 +49,8 @@ func handle_zoom():
 func _on_mob_spawner_damage(count: int) -> void:
 	pv -= count
 	print("Village has been attacked, ", pv, " hp left")
+	
+	if pv <= 0:
+		moveable = false
+		camera_2d.zoom = Vector2(1.2, 1.2)
 	pass # Replace with function body.

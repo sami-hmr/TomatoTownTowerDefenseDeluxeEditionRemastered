@@ -53,7 +53,6 @@ func spawn_mob() -> void:
 	if apocalypse:
 		mage_cycle += 1
 		if mage_cycle % 3 == 0:
-			print("spawning mage")
 			if mage_cycle % 9:
 				mage_amount += 1
 			var amount_mage = rng.randi_range(1, mage_amount)
