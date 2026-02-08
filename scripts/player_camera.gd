@@ -9,6 +9,8 @@ const y_min = 240
 const y_max = 1200
 
 
+var pv = 1000
+
 
 func _physics_process(delta: float) -> void:
 	var cam_size : Vector2 = camera_2d.get_viewport_rect().size / camera_2d.zoom
@@ -36,3 +38,11 @@ func handle_zoom():
 		camera_2d.zoom = Vector2(5, 5).min(camera_2d.zoom * 1.1)
 	if (Input.is_action_just_released("zoom out")):
 		camera_2d.zoom = Vector2(1.2, 1.2).max(camera_2d.zoom * 0.9)
+
+
+
+
+func _on_mob_spawner_damage(count: int) -> void:
+	pv -= count
+	print("Village has been attacked, ", pv, " hp left")
+	pass # Replace with function body.

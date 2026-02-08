@@ -125,6 +125,7 @@ func _on_build_selection(index: int) -> void:
 
 func shoot_enemies():
 	for enemy in in_area:
+		print("shoot")
 		var bullet = preload("res://scenes/bullet.tscn").instantiate()
 		self.add_child(bullet)
 		bullet.global_position = self.global_position
@@ -152,6 +153,7 @@ func _on_cooldown() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("enemy"):
+		print("found")
 		in_area.append(body)
 
 

@@ -7,7 +7,7 @@ extends CharacterBody2D
 var damaged: bool = false
 
 func _ready() -> void:
-	spool.pv = 100
+	spool.pv = 1000
 	pass # Replace with function body.
 
 func die() -> void:
@@ -23,7 +23,6 @@ func damage() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	#spool.pv -= 1
 	
 	if parent.progress > 5000 && damaged == false:
 		damage()
