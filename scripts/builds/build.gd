@@ -96,12 +96,13 @@ func upgrade_build() -> void:
 	range_shape.shape.radius = build_info.attack_range[build_info.level - 1]
 	costs = build_list.cost_list[build_selected].resources[build_info.level - 1]
 	player.shake_cam(10)
-	var next_cost: Resources = build_list.cost_list[build_selected].resources[build_info.level]
-	cost_info.get_node("Text").text =\
-						"Wood " + str(next_cost.get_resource("wood")) +\
-						"\nStone " + str(next_cost.get_resource("stone")) +\
-						"\nIron " + str(next_cost.get_resource("iron")) +\
-						 "\nTime " + str(next_cost.get_resource("time"))
+	if (build_selected <= 3 and build_info.level < 3) or (build_selected > 3 and build_info.level < 7):
+		var next_cost: Resources = build_list.cost_list[build_selected].resources[build_info.level]
+		cost_info.get_node("Text").text =\
+			"Wood " + str(next_cost.get_resource("wood")) +\
+			"\nStone " + str(next_cost.get_resource("stone")) +\
+			"\nIron " + str(next_cost.get_resource("iron")) +\
+			"\nTime " + str(next_cost.get_resource("time"))
 	timer_label.show()
 	build_timer.wait_time = costs.get_resource("time")
 	build_timer.start()
@@ -164,10 +165,10 @@ func _on_cooldown() -> void:
 		res.update_resource("wood", 10 * build_info.level)
 	if build_selected == 1:
 		var res: Resources = get_parent().get_node("Player").get_node("Resources")
-		res.update_resource("stone", 5 * build_info.level)
+		res.update_resource("stone", 10 * build_info.level)
 	if build_selected == 2:
 		var res: Resources = get_parent().get_node("Player").get_node("Resources")
-		res.update_resource("iron", 2 * build_info.level)
+		res.update_resource("iron", 5 * build_info.level)
 	if build_selected == 3:
 		var res: Resources = get_parent().get_node("Player").get_node("Resources")
 		res.update_resource("juice", 1 * build_info.level)
