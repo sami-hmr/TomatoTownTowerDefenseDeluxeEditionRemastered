@@ -1,6 +1,9 @@
 extends CharacterBody2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var label := preload("res://scenes/label.tscn")
+@onready var label_lose := preload("res://scenes/label_lose.tscn")
+@onready var main = get_node("/root/main")
 @onready var flash_rect: ColorRect = $ColorRect
 
 const SPEED = 300.0
@@ -19,8 +22,36 @@ func flash(speed: float, color: Color):
 	tween.tween_property(flash_rect, "color:a", 0.0, speed)
 	tween.tween_callback(func(): flash_rect.visible = false)
 
+var moveable = true
+var ended = false
+
+signal death()
+
+func check_win() -> bool:
+	if ended == false:
+		return false
+	var childrens = get_parent().get_children()
+	for child in childrens:
+		if child.has_method("enemy"):
+			return false
+	return true
+	pass
 
 func _physics_process(delta: float) -> void:
+	if check_win() == true:
+		moveable = false
+		camera_2d.zoom = Vector2(2.5, 2.5)
+		position.x = 720
+		position.y = 1280
+		var you_win = label.instantiate()
+		you_win.position.x = 720
+		you_win.position.y = 1280
+		you_win.scale = Vector2(4, 4)
+		main.add_child(you_win)
+		
+		return
+	if moveable == false:
+		return
 	var cam_size : Vector2 = camera_2d.get_viewport_rect().size / camera_2d.zoom
 	collision_shape_2d.shape.size = cam_size
 	var direction_x := Input.get_axis("left", "right")
@@ -49,8 +80,21 @@ func handle_zoom():
 
 
 
-
 func _on_mob_spawner_damage(count: int) -> void:
 	pv -= count
+	print("Village has been attacked, ", pv, " hp left")
+	
+	if pv <= 0:
+		moveable = false
+		camera_2d.zoom = Vector2(2.5, 2.5)
+		death.emit()
+		position.x = 720
+		position.y = 1280
+		var you_lose = label_lose.instantiate()
+		you_lose.position.x = 720
+		you_lose.position.y = 1280
+		you_lose.scale = Vector2(4, 4)
+		main.add_child(you_lose)
+		flash(100, Color.RED)
 	flash(1, Color.RED)
 	shake_cam(30)

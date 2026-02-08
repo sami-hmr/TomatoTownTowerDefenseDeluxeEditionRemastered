@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c1e1elr6usedp"]
+
+[ext_resource type="FontFile" uid="uid://dhvt5yi3syspp" path="res://assets/Fonts/daydream.otf" id="1_2uqk7"]
+
+[node name="Label" type="Label" unique_id=1013041779]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_2uqk7")
+text = "YOU WIN"

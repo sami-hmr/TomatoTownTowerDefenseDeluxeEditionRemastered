@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://daj6ilqpjx810"]
+
+[ext_resource type="FontFile" uid="uid://dhvt5yi3syspp" path="res://assets/Fonts/daydream.otf" id="1_rbvmf"]
+
+[node name="Label" type="Label" unique_id=1377661006]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_rbvmf")
+text = "YOU LOSE"

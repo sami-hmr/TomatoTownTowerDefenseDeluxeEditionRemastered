@@ -19,14 +19,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5glv"]
-size = Vector2(44, 10)
+size = Vector2(16, 6)
 
 [node name="Bullet" type="Area2D" unique_id=1857150082]
 script = ExtResource("1_y25gk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1651236700]
 rotation = 0.7853982
-scale = Vector2(0.5912353, 0.59123516)
+scale = Vector2(0.29514602, 0.29514593)
 sprite_frames = SubResource("SpriteFrames_l5glv")
 autoplay = "default"
 

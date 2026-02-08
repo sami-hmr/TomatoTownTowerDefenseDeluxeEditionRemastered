@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://dip0pkqu4xdgu" path="res://assets/UI/UI_Flat_Frame03a.png" id="30_alt0y"]
 [ext_resource type="Texture2D" uid="uid://q8fd5fw0i4yp" path="res://assets/Ressource/230.png" id="31_iwx2m"]
 [ext_resource type="Script" uid="uid://dokaqg58rkofu" path="res://scenes/builds/end_animation.gd" id="32_ecfy7"]
+[ext_resource type="AudioStream" uid="uid://c1ysxwi2awfuj" path="res://assets/sounds/build.mp3" id="33_obhso"]
+[ext_resource type="AudioStream" uid="uid://dodlnb5sdwknx" path="res://assets/sounds/build finished.mp3" id="34_jsfww"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p58lx"]
 atlas = ExtResource("5_wmb7i")
@@ -1008,6 +1010,12 @@ sprite_frames = SubResource("SpriteFrames_4f04l")
 frame = 4
 frame_progress = 1.0
 script = ExtResource("32_ecfy7")
+
+[node name="building_sound" type="AudioStreamPlayer" parent="." unique_id=1500184959]
+stream = ExtResource("33_obhso")
+
+[node name="building_ended_sound" type="AudioStreamPlayer" parent="." unique_id=1026113753]
+stream = ExtResource("34_jsfww")
 
 [connection signal="timeout" from="Building" to="." method="_on_building_timeout"]
 [connection signal="item_focused" from="BuildSelection" to="." method="_on_build_selection_item_focused"]

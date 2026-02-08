@@ -13,6 +13,9 @@ extends Node2D
 @onready var cooldown: Timer = $Reload
 @onready var range_shape: CollisionShape2D = $range/shape
 @onready var build_finished_anim : AnimatedSprite2D = $end_animation
+@onready var building_sound: AudioStreamPlayer = $building_sound
+@onready var building_ended_sound: AudioStreamPlayer = $building_ended_sound
+
 
 
 var build_selected: int = -1
@@ -96,6 +99,7 @@ func upgrade_build() -> void:
 	range_shape.shape.radius = build_info.attack_range[build_info.level - 1]
 	costs = build_list.cost_list[build_selected].resources[build_info.level - 1]
 	player.shake_cam(10)
+	building_sound.play()
 	if (build_selected <= 3 and build_info.level < 3) or (build_selected > 3 and build_info.level < 7):
 		var next_cost: Resources = build_list.cost_list[build_selected].resources[build_info.level]
 		cost_info.get_node("Text").text =\
@@ -113,6 +117,7 @@ func _on_building_timeout() -> void:
 	timer_label.visible = false
 	build_finished_anim.visible = true
 	build_finished_anim.play("default")
+	building_ended_sound.play()
 	if (build_info == null):
 		return
 	timer_label.hide()

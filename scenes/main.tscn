@@ -144,4 +144,5 @@ position = Vector2(286, 464)
 [node name="CloudsSpawner" parent="." unique_id=1305137599 instance=ExtResource("6_tefeu")]
 
 [connection signal="area_entered" from="ZeubHumide/Area2D" to="ZeubHumide" method="_on_area_2d_area_entered"]
+[connection signal="death" from="Player" to="mob_spawner" method="_on_player_death"]
 [connection signal="damage" from="mob_spawner" to="Player" method="_on_mob_spawner_damage"]

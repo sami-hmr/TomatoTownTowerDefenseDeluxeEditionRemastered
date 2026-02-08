@@ -10,6 +10,8 @@ func _ready() -> void:
 	spool.pv = 1000
 	pass # Replace with function body.
 
+
+
 func die() -> void:
 	if !animated_sprite_2d.animation == "death":
 		parent.move = false
@@ -37,3 +39,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 
 func enemy() -> void:
 	pass
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.has_method("bullet"):
+		self.spool.pv -= area.damage
+		area.queue_free()
