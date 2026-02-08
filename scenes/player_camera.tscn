@@ -27,7 +27,7 @@ script = ExtResource("2_vtnai")
 script = ExtResource("3_tparg")
 resource_list = {
 "iron": 0,
-"juice": 0,
+"juice": 10,
 "stone": 0,
 "time": 0,
 "wood": 300

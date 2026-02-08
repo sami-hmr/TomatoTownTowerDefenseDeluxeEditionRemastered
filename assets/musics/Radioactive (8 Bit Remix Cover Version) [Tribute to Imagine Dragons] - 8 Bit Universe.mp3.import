@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clepu1vvq8q7r"
+path="res://.godot/imported/Radioactive (8 Bit Remix Cover Version) [Tribute to Imagine Dragons] - 8 Bit Universe.mp3-465397b5c5e807d59c1e63b13852b9eb.mp3str"
+
+[deps]
+
+source_file="res://assets/musics/Radioactive (8 Bit Remix Cover Version) [Tribute to Imagine Dragons] - 8 Bit Universe.mp3"
+dest_files=["res://.godot/imported/Radioactive (8 Bit Remix Cover Version) [Tribute to Imagine Dragons] - 8 Bit Universe.mp3-465397b5c5e807d59c1e63b13852b9eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
