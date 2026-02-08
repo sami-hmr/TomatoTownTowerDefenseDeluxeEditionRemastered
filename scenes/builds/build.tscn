@@ -666,7 +666,7 @@ health = Array[int]([100, 150, 200])
 damage = Array[int]([0, 0, 0])
 cooldown = Array[float]([2.5, 2.0, 1.5])
 attack_range = Array[float]([0.0, 0.0, 0.0])
-color = Color(0.96073943, 0.32338628, 1.732707e-06, 1)
+color = Color(1, 0.7933914, 0.7093594, 1)
 
 [node name="Career" type="Node" parent="BuildList" unique_id=757078799]
 
@@ -714,7 +714,7 @@ health = Array[int]([100, 150, 200])
 damage = Array[int]([0, 0, 0])
 cooldown = Array[float]([3.0, 2.5, 2.0])
 attack_range = Array[float]([0.0, 0.0, 0.0])
-color = Color(0.41406584, 0.41406578, 0.41406578, 1)
+color = Color(0.8175213, 0.8175213, 0.81752115, 1)
 
 [node name="Mine" type="Node" parent="BuildList" unique_id=1515189901]
 
@@ -762,7 +762,7 @@ health = Array[int]([100, 150, 200])
 damage = Array[int]([0, 0, 0])
 cooldown = Array[float]([5.0, 4.0, 3.5])
 attack_range = Array[float]([0.0, 0.0, 0.0])
-color = Color(1, 0.5426276, 0.4652682, 1)
+color = Color(1, 0.7122793, 0.66035116, 1)
 
 [node name="Laboratory" type="Node" parent="BuildList" unique_id=1378740538]
 
@@ -810,7 +810,7 @@ health = Array[int]([100, 150, 200])
 damage = Array[int]([0, 0, 0])
 cooldown = Array[float]([20.0, 15.0, 10.0])
 attack_range = Array[float]([0.0, 0.0, 0.0])
-color = Color(0.9850581, 0.2019586, 0.9999998, 1)
+color = Color(0.9999998, 0.78465354, 0.9935579, 1)
 
 [node name="Archery" type="Node" parent="BuildList" unique_id=64762325]
 
