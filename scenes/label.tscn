@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c1e1elr6usedp"]
+
+[node name="Label" type="Label" unique_id=1013041779]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "YOU WIN"

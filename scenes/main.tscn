@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cod6lq4wbq5b5" path="res://scenes/map.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dk7d238wlf2e4" path="res://scenes/builds/build.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://cf7kwx84ty528" path="res://scenes/player_camera.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://de8dj1aj527ex" path="res://scenes/player_camera.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://cbcsxqjje3ktx" path="res://scripts/zeub_humide.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://w7wrh5ivhg3u" path="res://scenes/mob_spawner.tscn" id="5_tbgi4"]
 
@@ -135,4 +135,5 @@ position = Vector2(94, 517)
 position = Vector2(1262, 153)
 
 [connection signal="area_entered" from="ZeubHumide/Area2D" to="ZeubHumide" method="_on_area_2d_area_entered"]
+[connection signal="death" from="Player" to="mob_spawner" method="_on_player_death"]
 [connection signal="damage" from="mob_spawner" to="Player" method="_on_mob_spawner_damage"]

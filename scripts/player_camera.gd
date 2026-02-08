@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var label := preload("res://scenes/label.tscn")
+@onready var main = get_node("/root/main")
 
 const SPEED = 300.0
 const x_max = 860
@@ -14,9 +16,33 @@ func shake_cam(strength: float = 30.0):
 var pv = 1000
 
 var moveable = true
+var ended = false
 
+signal death()
+
+func check_win() -> bool:
+	if ended == false:
+		return false
+	var childrens = get_parent().get_children()
+	for child in childrens:
+		if child.has_method("enemy"):
+			return false
+	return true
+	pass
 
 func _physics_process(delta: float) -> void:
+	if check_win() == false:
+		moveable = false
+		camera_2d.zoom = Vector2(2.5, 2.5)
+		position.x = 720
+		position.y = 1280
+		var you_win = label.instantiate()
+		you_win.position.x = 720
+		you_win.position.y = 1280
+		you_win.scale = Vector2(4, 4)
+		main.add_child(you_win)
+		
+		return
 	if moveable == false:
 		return
 	var cam_size : Vector2 = camera_2d.get_viewport_rect().size / camera_2d.zoom
@@ -47,12 +73,14 @@ func handle_zoom():
 
 
 
-
 func _on_mob_spawner_damage(count: int) -> void:
 	pv -= count
 	print("Village has been attacked, ", pv, " hp left")
 	
 	if pv <= 0:
 		moveable = false
-		camera_2d.zoom = Vector2(1.2, 1.2)
+		camera_2d.zoom = Vector2(2.5, 2.5)
+		death.emit()
+		position.x = 720
+		position.y = 1280
 	pass # Replace with function body.

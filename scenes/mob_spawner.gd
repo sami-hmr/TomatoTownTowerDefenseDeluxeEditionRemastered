@@ -18,6 +18,8 @@ var mage_amount = 1
 var mage_cycle = 0
 var apocalypse = false
 
+var dead:bool = false
+
 var rng = RandomNumberGenerator.new()
 
 signal damage(count: int)
@@ -28,6 +30,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if dead:
+		return
 	spawn_timer += delta
 	difficulty_timer += delta
 	
@@ -66,4 +70,15 @@ func spawn_mob() -> void:
 func _on_timer_timeout() -> void:
 	apocalypse = true
 	print("apocalypse has started!")
+	pass # Replace with function body.
+
+
+func _on_player_death() -> void:
+	dead = true
+	queue_free()
+	pass # Replace with function body.
+
+
+func _on_timer_2_timeout() -> void:
+	queue_free()
 	pass # Replace with function body.
