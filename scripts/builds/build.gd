@@ -14,6 +14,7 @@ extends Node2D
 @onready var range: Area2D = $range
 @onready var range_shape: CollisionShape2D = $range/shape
 
+
 var build_selected: int = -1
 var costs: Resources = null
 var build_info: BuildInfo = null
@@ -125,10 +126,13 @@ func _on_build_selection(index: int) -> void:
 
 func shoot_enemies():
 	for enemy in in_area:
+		if !is_instance_valid(enemy):
+			return
 		var bullet = preload("res://scenes/bullet.tscn").instantiate()
 		self.add_child(bullet)
 		bullet.global_position = self.global_position
 		bullet.target = enemy
+		return
 	return
 
 func _on_cooldown() -> void:
@@ -151,12 +155,27 @@ func _on_cooldown() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("enemy"):
+	var parent = body.get_parent()
+	if body.has_method("enemy") or (parent and parent.has_method("enemy")):
 		in_area.append(body)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.has_method("enemy"):
+	var parent = body.get_parent()
+	if body.has_method("enemy") or (parent and parent.has_method("enemy")):
 		var id = in_area.find(body)
+		if id != -1:
+			in_area.remove_at(id)
+
+
+func _on_range_area_entered(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if area.has_method("enemy") or (parent and parent.has_method("enemy")):
+		in_area.append(area)
+
+func _on_range_area_exited(area: Area2D) -> void:
+	var parent = area.get_parent()
+	if area.has_method("enemy") or (parent and parent.has_method("enemy")):
+		var id = in_area.find(area)
 		if id != -1:
 			in_area.remove_at(id)

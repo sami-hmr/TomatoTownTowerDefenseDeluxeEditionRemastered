@@ -5,7 +5,7 @@ extends Area2D
 var target: Node2D = null
 var speed: float = 100
 var rotation_speed: float = 5.0
-var damage: int = 0
+var damage: int = 50
 
 func bullet():
 	return
