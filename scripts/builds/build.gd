@@ -11,8 +11,8 @@ extends Node2D
 @onready var timer_label: Label = $BuildTimer
 @onready var cost_info: Node2D = $UpgradeInfo
 @onready var cooldown: Timer = $Reload
-@onready var range: Area2D = $range
 @onready var range_shape: CollisionShape2D = $range/shape
+@onready var build_finished_anim : AnimatedSprite2D = $end_animation
 
 
 var build_selected: int = -1
@@ -20,14 +20,23 @@ var costs: Resources = null
 var build_info: BuildInfo = null
 var selected : bool = false
 var in_area: Array = []
+var player
 
 
 func _ready() -> void:
+	# Dupliquer la forme pour que chaque tour ait sa propre range
+	range_shape.shape = range_shape.shape.duplicate()
+	
 	anim.play()
 	select_sp.play()
 	timer_label.visible = false
 	info.visible = false
 	select_build.visible = false
+	var children = get_parent().get_children()
+	for child in children:
+		if child.name == "Player":
+			player = child
+			print("found player")
 
 func _process(delta: float) -> void:
 	building_process()
@@ -84,6 +93,7 @@ func upgrade_build() -> void:
 	reload.wait_time = build_info.cooldown[build_info.level - 1]
 	range_shape.shape.radius = build_info.attack_range[build_info.level - 1]
 	costs = build_list.cost_list[build_selected].resources[build_info.level - 1]
+	player.shake_cam(10)
 	var next_cost: Resources = build_list.cost_list[build_selected].resources[build_info.level]
 	cost_info.get_node("Text").text =\
 						"Wood " + str(next_cost.get_resource("wood")) +\
@@ -102,6 +112,8 @@ func display_infos():
 
 func _on_building_timeout() -> void:
 	timer_label.visible = false
+	build_finished_anim.visible = true
+	build_finished_anim.play("default")
 	build_timer.stop()
 	anim.animation = str(build_info.level) + "_idle"
 	anim.play()

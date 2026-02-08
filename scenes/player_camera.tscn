@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bicot2nviu4t5" path="res://scripts/player_camera.gd" id="1_7pa0d"]
 [ext_resource type="Script" uid="uid://y3rfrg1egedm" path="res://scripts/player.gd" id="2_eanys"]
+[ext_resource type="Script" uid="uid://dqjs41aqfr1ci" path="res://scenes/camera_2d.gd" id="2_vtnai"]
 [ext_resource type="Script" uid="uid://cfhde2mv0k2tr" path="res://scripts/ressources.gd" id="3_tparg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_num78"]
@@ -20,6 +21,7 @@ position = Vector2(183.5, 83)
 zoom = Vector2(1.36, 1.36)
 process_callback = 0
 position_smoothing_enabled = true
+script = ExtResource("2_vtnai")
 
 [node name="Resources" type="Node2D" parent="." unique_id=1714720634]
 script = ExtResource("3_tparg")

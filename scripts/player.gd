@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_resources()
+	ressource_container.position = get_viewport().get_visible_rect().size - ressource_container.size
 
 func setup_resources():
 	var resources_data = [

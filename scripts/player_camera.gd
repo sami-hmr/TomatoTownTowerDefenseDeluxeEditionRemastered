@@ -8,6 +8,8 @@ const x_min = 385
 const y_min = 240
 const y_max = 1200
 
+func shake_cam(strength: float = 30.0):
+	camera_2d.apply_shake(strength)
 
 
 func _physics_process(delta: float) -> void:
