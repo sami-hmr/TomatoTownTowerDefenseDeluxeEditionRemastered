@@ -24,14 +24,13 @@ var player
 
 
 func _ready() -> void:
-	# Dupliquer la forme pour que chaque tour ait sa propre range
 	range_shape.shape = range_shape.shape.duplicate()
-	
+	select_build.get_popup().id_focused.connect(_on_item_hovered)
 	anim.play()
 	select_sp.play()
-	timer_label.visible = false
-	info.visible = false
-	select_build.visible = false
+	timer_label.hide()
+	info.hide()
+	select_build.hide()
 	var children = get_parent().get_children()
 	for child in children:
 		if child.name == "Player":
@@ -40,30 +39,30 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	building_process()
-	display_infos()
 	if build_timer.time_left > 0:
 		timer_label.text = str(int(build_timer.time_left))
 	if select_btn.has_focus():
-		select_build.visible = true
+		select_build.show()
 		selected = true
 		if build_info == null:
 			select_build.hide()
 			select_build.grab_focus()
 			select_build.show_popup()
 		else:
-			select_sp.visible = true
+			select_sp.show()
 			cost_info.show()
 		if Input.is_action_just_pressed("upgrade_build") and can_upgrade():
 			upgrade_build()
 	else:
 		select_sp.hide()
-		cost_info.hide()
+		if !select_build.has_focus():
+			cost_info.hide()
 	if !select_build.has_focus():
-		select_build.visible = false
+		select_build.hide()
 	
 
 func building_process() -> void:
-	if build_timer.time_left <= 0:
+	if build_timer.time_left <= 0 or build_info == null:
 		return
 	timer_label.text = str(int(build_timer.time_left))
 	var progress: int = build_timer.time_left / costs.get_resource("time") * 100
@@ -77,6 +76,12 @@ func building_process() -> void:
 		anim.frame = 0
 
 func can_upgrade() -> bool:
+	if build_timer.time_left > 0:
+		return false
+	if build_selected <= 3 and build_info.level >= 3:
+		return false
+	elif build_info.level >= 7:
+		return false
 	var actual_res: Resources = get_parent().get_node("Player").get_node("Resources")
 	for name in costs.resource_list:
 		if costs.get_resource(name) > actual_res.get_resource(name):
@@ -86,10 +91,7 @@ func can_upgrade() -> bool:
 	return true
 
 func upgrade_build() -> void:
-	if build_info.level < 7 and build_timer.time_left <= 0:
-		build_info.level += 1
-	else:
-		return
+	build_info.level += 1
 	reload.wait_time = build_info.cooldown[build_info.level - 1]
 	range_shape.shape.radius = build_info.attack_range[build_info.level - 1]
 	costs = build_list.cost_list[build_selected].resources[build_info.level - 1]
@@ -98,31 +100,38 @@ func upgrade_build() -> void:
 	cost_info.get_node("Text").text =\
 						"Wood " + str(next_cost.get_resource("wood")) +\
 						"\nStone " + str(next_cost.get_resource("stone")) +\
-						"\nIron " + str(next_cost.get_resource("iron"))
-	timer_label.visible = true
+						"\nIron " + str(next_cost.get_resource("iron")) +\
+						 "\nTime " + str(next_cost.get_resource("time"))
+	timer_label.show()
 	build_timer.wait_time = costs.get_resource("time")
 	build_timer.start()
 	anim.animation = str(build_info.level) + "_build"
 	anim.stop()
 
-func display_infos():
-	if not selected:
-		return
-	#build_list[build_selected].display_infos()
-
 func _on_building_timeout() -> void:
 	timer_label.visible = false
 	build_finished_anim.visible = true
 	build_finished_anim.play("default")
+	if (build_info == null):
+		return
+	timer_label.hide()
 	build_timer.stop()
 	anim.animation = str(build_info.level) + "_idle"
 	anim.play()
-	info.visible = true
+	info.show()
 	info.text = build_info.build_name + " - LvL." + str(build_info.level)
 
+func _on_item_hovered(id: int):
+	var cost = build_list.cost_list[id].resources[0]
+	cost_info.get_node("Text").text =\
+						"Wood " + str(cost.get_resource("wood")) +\
+						"\nStone " + str(cost.get_resource("stone")) +\
+						"\nIron " + str(cost.get_resource("iron")) +\
+						 "\nTime " + str(cost.get_resource("time"))
+	cost_info.show()
 
 func _on_build_selection(index: int) -> void:
-	select_build.visible = false
+	select_build.hide()
 	index -= 1
 	if index >= 4:
 		index -= 1
@@ -164,7 +173,6 @@ func _on_cooldown() -> void:
 		res.update_resource("juice", 1 * build_info.level)
 	if build_selected == 4:
 		shoot_enemies()
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	var parent = body.get_parent()

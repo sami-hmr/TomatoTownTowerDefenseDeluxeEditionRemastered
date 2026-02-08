@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cf7kwx84ty528"]
+[gd_scene format=3 uid="uid://de8dj1aj527ex"]
 
 [ext_resource type="Script" uid="uid://bicot2nviu4t5" path="res://scripts/player_camera.gd" id="1_7pa0d"]
 [ext_resource type="Script" uid="uid://y3rfrg1egedm" path="res://scripts/player.gd" id="2_eanys"]
@@ -49,4 +49,3 @@ theme_override_constants/separation = 128
 wait_time = 300.0
 one_shot = true
 autostart = true
-ignore_time_scale = true
