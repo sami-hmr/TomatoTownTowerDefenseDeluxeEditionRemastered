@@ -3,12 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cod6lq4wbq5b5" path="res://scenes/map.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dk7d238wlf2e4" path="res://scenes/builds/build.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://de8dj1aj527ex" path="res://scenes/player_camera.tscn" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://cbcsxqjje3ktx" path="res://scripts/zeub_humide.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://w7wrh5ivhg3u" path="res://scenes/mob_spawner.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bda61kbdui834" path="res://scenes/clouds.tscn" id="6_tefeu"]
 [ext_resource type="AudioStream" uid="uid://clepu1vvq8q7r" path="res://assets/musics/Radioactive (8 Bit Remix Cover Version) [Tribute to Imagine Dragons] - 8 Bit Universe.mp3" id="7_o6xl0"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sugp2"]
 
 [node name="main" type="Node2D" unique_id=1482187833]
 
@@ -19,22 +16,6 @@ parameters/looping = true
 
 [node name="map" parent="." unique_id=283908063 instance=ExtResource("1_o5qli")]
 position = Vector2(800, 800)
-
-[node name="ZeubHumide" type="CharacterBody2D" parent="." unique_id=1765354438]
-visible = false
-script = ExtResource("4_jyhfs")
-
-[node name="Area2D" type="Area2D" parent="ZeubHumide" unique_id=1429653783]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZeubHumide/Area2D" unique_id=1149879843]
-position = Vector2(-1, 0)
-shape = SubResource("CapsuleShape2D_sugp2")
-debug_color = Color(0.8503294, 0, 0.11919095, 0.41960785)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZeubHumide" unique_id=2032924799]
-position = Vector2(-1, 0)
-shape = SubResource("CapsuleShape2D_sugp2")
-debug_color = Color(0.11293744, 0.42354527, 0.8974034, 0.41960785)
 
 [node name="Build" parent="." unique_id=620519813 instance=ExtResource("3_jyhfs")]
 position = Vector2(737, 396)
@@ -143,6 +124,5 @@ position = Vector2(286, 464)
 
 [node name="CloudsSpawner" parent="." unique_id=1305137599 instance=ExtResource("6_tefeu")]
 
-[connection signal="area_entered" from="ZeubHumide/Area2D" to="ZeubHumide" method="_on_area_2d_area_entered"]
-[connection signal="death" from="Player" to="mob_spawner" method="_on_player_death"]
 [connection signal="damage" from="mob_spawner" to="Player" method="_on_mob_spawner_damage"]
+[connection signal="death" from="Player" to="mob_spawner" method="_on_player_death"]

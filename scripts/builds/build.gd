@@ -41,6 +41,8 @@ func _ready() -> void:
 			print("found player")
 
 func _process(delta: float) -> void:
+	if build_info:
+		anim.modulate = build_info.color
 	building_process()
 	if build_timer.time_left > 0:
 		timer_label.text = str(int(build_timer.time_left))
